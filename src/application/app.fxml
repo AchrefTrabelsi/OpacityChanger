@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="FileMenu" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#choosefiles" text="Add images..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <right>
+      <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="50.0">
+               <children>
+                  <Button fx:id="savebutton" disable="true" mnemonicParsing="false" onAction="#saveselectedclicked" text="SaveSelected" textAlignment="CENTER" />
+                  <Button fx:id="saveallbutton" disable="true" mnemonicParsing="false" onAction="#saveallclicked" text="SaveAll" />
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <RadioButton fx:id="simple" mnemonicParsing="false" onAction="#simpleinit" selected="true" text="Simple">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tg1" />
+               </toggleGroup>
+            </RadioButton>
+            <Label fx:id="opacity" text="Opacity : 1" textAlignment="CENTER" />
+            <Slider fx:id="opacityslider" blockIncrement="0.01" majorTickUnit="0.25" max="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" value="1.0" />
+            <Separator prefWidth="200.0" />
+            <RadioButton fx:id="multiple" mnemonicParsing="false" text="Multiple" toggleGroup="$tg1" />
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
+                  <Label alignment="CENTER" text="Step :" />
+                  <TextField fx:id="step" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="68.0" text="0.1" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" spacing="25.0">
+               <children>
+                  <Label text="Timer :" />
+                  <TextField fx:id="timer" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="68.0" text="0.5" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <Button fx:id="showbutton" disable="true" mnemonicParsing="false" onAction="#showclicked" text="Show" />
+            <Separator prefWidth="200.0" />
+            <Button fx:id="deletebutton" disable="true" mnemonicParsing="false" onAction="#delete" text="Delete" />
+            <ListView fx:id="imagelist" />
+         </children>	
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </right>
+   <center>
+      <GridPane fx:id="gp" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+        </rowConstraints>
+         <children>
+            <Canvas fx:id="c" height="131.0" width="142.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
